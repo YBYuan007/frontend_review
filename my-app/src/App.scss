@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: lightgray;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  width: 100%;
+
+  &:focus {
+    border-color: black
+  }
+}
+
+.page--wrapper{
+  display: flex; 
+  flex-direction: column;
+}
+
+.about{
+  // each individual wrapper 
+  &--wrapper{
+    margin: 15px;
+    display: flex; 
+    flex-direction: column;
+    
+  }
+
+    // pic + blurb
+  &--main{
+      display: flex; 
+      flex-direction: row;
+    }
+
+  &--profile-pic{
+    padding-top: 20px;
+    width: 250px; 
+
+    img{
+      border-radius: 50%;
+      width: 200px; 
+      border: 2px solid lightgrey; 
+    }
+  }
+
+  &--profile-corewrapper {
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  &--profile-blurb-top-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &--profile-blurb-top-name{
+      font-family: 'Raleway', sans-serif, 500px;
+      align-items: center;
+      font-size: 40px;
+    }
+
+  &--profile-blurb-sign{
+      cursor: pointer;
+      color: darkgray;
+      background-color: transparent;
+      border: none;
+      font-size: 40px;
+
+      &:hover {
+        color: black
+      }
+    }
+
+  &--profile-blurb-main {
+    list-style: none; 
+    
+    ul{
+      font-family: 'Raleway', sans-serif ;
+    }
+    li{
+      padding-bottom: 0.5rem;
+      font-family: 'Raleway', sans-serif ;
+    }
+  }
+
+  &--profile-blurb-test_scores{
+    list-style: none;  
+  
+    ul{
+      
+      font-family: 'Raleway', sans-serif ;
+    }
+    li{
+     
+      font-family: 'Raleway', sans-serif ;
+    }
+  }
+
+  &--profile-tags{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 8px 0 0 0; 
+  }
+
+  &--profile-tag{
+    width: auto;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding: 0 8px;
+    font-size: 14px;
+    list-style: none;
+    border-radius: 6px;
+    margin: 0 8px 8px 0;
+    background: lightgray;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  &--profile-tag-title{
+    margin-top: 1px;
+  }
+
+  &--profile-add-tag{
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+
+    &:focus {
+    border-color: black
+    }
+  }
+}
+
+hr {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
