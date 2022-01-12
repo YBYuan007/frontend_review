@@ -6,7 +6,7 @@ export default function Test(props) {
     return grades.map(function (grade, index) {
       return (
         <li id="test_number">
-          Test {index + 1}: {grade}%
+          Test {index + 1}:     {grade}%
         </li>
       );
     });

@@ -2,13 +2,12 @@
 import { useState } from "react";
 import "./App.scss";
 import StudentList from "./components/StudentList/Index";
-import useTools from "./hooks/useTools";
+import {avg} from "./hooks/useTools";
 
 function App(props) {
   const [filterTags, setFilterTags] = useState("");
   const [filterWords, setFilterWords] = useState("");
 
-  const {avg} = useTools();
 
   return (
     <div>

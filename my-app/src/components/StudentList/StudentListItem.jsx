@@ -6,11 +6,10 @@ export default function StudentListItem(props) {
   const [expandedStudentIds, setExpandedStudentIds] = useState([]);
   const [inputValue, setInputValue] = useState({});
   const [students, setStudents] = useState(props.students);
-  
 
   const student = props.student;
   const avg = props.avg;
-  
+
   function addTag(studentId, event) {
     if (event.key === "Enter") {
       const copy = [...students];
@@ -47,7 +46,7 @@ export default function StudentListItem(props) {
     <div className="about--wrapper" key={student.id}>
       <article className="about--main">
         <div className="about--profile-pic">
-          <img src={student.pic} alt={student.firstName.concat(" " , student.lastName)} />
+          <img src={student.pic} alt={student.firstName.concat(" ", student.lastName)} />
         </div>
 
         <div className="about--profile-corewrapper">
@@ -75,10 +74,10 @@ export default function StudentListItem(props) {
               <li>Average: {avg(student.grades)}</li>
             </ul>
 
-            <Test student={student} expandedStudentIds={expandedStudentIds} />
+            <Test student={student} expandedStudentIds={expandedStudentIds} key={Test.index} />
           </div>
 
-       
+
           <div>
             <ul className="about--profile-tags">
               {student.tags.map((tag, index) => (
