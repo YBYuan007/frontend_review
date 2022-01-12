@@ -1,5 +1,6 @@
 import Test from "../Test"
 import { useState } from "react";
+import PropTypes from 'prop-types'; 
 
 
 export default function StudentListItem(props) {
@@ -46,7 +47,7 @@ export default function StudentListItem(props) {
     <div className="about--wrapper" key={student.id}>
       <article className="about--main">
         <div className="about--profile-pic">
-          <img src={student.pic} alt={student.firstName.concat(" ", student.lastName)} />
+           <img src={student.pic} alt={student.firstName.concat(" ", student.lastName)} />
         </div>
 
         <div className="about--profile-corewrapper">
@@ -103,3 +104,9 @@ export default function StudentListItem(props) {
     </div>
   );
 }
+
+
+
+StudentListItem.propTypes = {
+  students: PropTypes.array.isRequired,
+};

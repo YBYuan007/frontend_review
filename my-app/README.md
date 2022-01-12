@@ -19,3 +19,4 @@ The application uses React and some testing libraries (TDD is the best!).
 - accessibility of the website 
 - memoizing components
 - responsive UI
+- delete tag function
