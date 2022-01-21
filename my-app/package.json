@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.6",
     "@mui/styled-engine": "^5.2.6",
-    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
     "node-sass": "^7.0.1",
@@ -41,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "jest": "^27.4.7",
     "prop-types": "^15.8.1"

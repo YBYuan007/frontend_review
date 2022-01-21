@@ -12,6 +12,7 @@ export default function StudentList(props) {
   const filterTags = props.filterTags;
   const filterWords = props.filterWords;
 
+
   useEffect(() => {
     axios
       .get(URL)
@@ -22,6 +23,21 @@ export default function StudentList(props) {
         setStudents(original.data.students);
       });
   }, [URL]);
+
+
+  function addTag(studentId, event) {
+    if (event.key === "Enter") {
+      const newStudents = students.map((student) => {
+        if (student.id === studentId && event.target.value.length > 0) {
+          student.tags.push(event.target.value);
+        }
+        return student;
+      });
+      setStudents(newStudents);
+      setInputValue[studentId] = "";
+      event.target.value = "";
+    }
+  }
 
   const eachStudent = students
     .filter((student) =>
@@ -46,8 +62,7 @@ export default function StudentList(props) {
       }
     })
     .map((student) => (
-      <StudentListItem key={student.id} student={student} students={students} 
-      avg = {props.avg}/>
+      <StudentListItem key={student.id} student={student} addTag={addTag}/>
     ));
 
   return <div>{eachStudent}</div>;

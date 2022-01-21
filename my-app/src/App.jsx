@@ -2,7 +2,6 @@
 import { useState } from "react";
 import "./App.scss";
 import StudentList from "./components/StudentList/Index";
-import {avg} from "./hooks/useTools";
 
 function App(props) {
   const [filterTags, setFilterTags] = useState("");
@@ -33,7 +32,7 @@ function App(props) {
 
       {/* <section className="page--wrapper">{eachStudent}</section> */}
       <section className="page--wrapper">
-        <StudentList filterWords={filterWords} filterTags={filterTags} avg = {avg}  />
+        <StudentList filterWords={filterWords} filterTags={filterTags}  />
       </section>
     </div>
   );

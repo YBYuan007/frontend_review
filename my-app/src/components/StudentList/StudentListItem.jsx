@@ -1,36 +1,20 @@
-import Test from "../Test"
+import Test from "../Test";
 import { useState } from "react";
-import PropTypes from 'prop-types'; 
-
+import PropTypes from "prop-types";
+import { avg } from "../../hooks/useTools";
 
 export default function StudentListItem(props) {
   const [expandedStudentIds, setExpandedStudentIds] = useState([]);
   const [inputValue, setInputValue] = useState({});
-  const [students, setStudents] = useState(props.students);
+  // const [students, setStudents] = useState(props.students);
 
   const student = props.student;
-  const avg = props.avg;
 
-  function addTag(studentId, event) {
-    if (event.key === "Enter") {
-      const copy = [...students];
-      const newStudents = copy.map((student) => {
-        if (student.id === studentId && event.target.value.length > 0) {
-          student.tags.push(event.target.value);
-        }
-        return student;
-      });
-      setStudents(newStudents);
-      setInputValue[studentId] = "";
-      event.target.value = "";
-    }
-  }
 
 
   function toggleSymbol(studentId) {
     if (expandedStudentIds.includes(studentId)) {
-      const copy = [...expandedStudentIds];
-      const newExpandedStudentIds = copy.filter((id) => {
+      const newExpandedStudentIds = expandedStudentIds.filter((id) => {
         return id !== studentId;
       });
       setExpandedStudentIds(newExpandedStudentIds);
@@ -47,13 +31,19 @@ export default function StudentListItem(props) {
     <div className="about--wrapper" key={student.id}>
       <article className="about--main">
         <div className="about--profile-pic">
-           <img src={student.pic} alt={student.firstName.concat(" ", student.lastName)} />
+          <img
+            src={student.pic}
+            alt={student.firstName.concat(" ", student.lastName)}
+          />
         </div>
 
         <div className="about--profile-corewrapper">
           <div className="about--profile-blurb-top-wrapper">
-            <p className="about--profile-blurb-top-name">
-              <b>
+            <p
+              className="about--profile-blurb-top-name"
+              // data-testid="student-name"
+            >
+              <b data-testid="student-name" value={student.firstName}>
                 {student.firstName.toUpperCase()}{" "}
                 {student.lastName.toUpperCase()}
               </b>
@@ -62,6 +52,7 @@ export default function StudentListItem(props) {
             <button
               className="about--profile-blurb-sign"
               onClick={() => toggleSymbol(student.id)}
+              data-testid="symbol-name"
             >
               {expandedStudentIds.includes(student.id) ? "-" : "+"}
             </button>
@@ -75,13 +66,16 @@ export default function StudentListItem(props) {
               <li>Average: {avg(student.grades)}</li>
             </ul>
 
-            <Test student={student} expandedStudentIds={expandedStudentIds} key={Test.index} />
+            <Test
+              student={student}
+              expandedStudentIds={expandedStudentIds}
+              key={Test.index}
+            />
           </div>
-
 
           <div>
             <ul className="about--profile-tags">
-              {student.tags.map((tag, index) => (
+              {student.tags && student.tags.map((tag, index) => (
                 <li key={index} className="about--profile-tag">
                   <span className="about--profile-tag-title">{tag}</span>
                 </li>
@@ -94,9 +88,8 @@ export default function StudentListItem(props) {
               placeholder="add tags"
               onChange={(event) => handleUserInput(student.id, event)}
               value={inputValue[student.id]}
-              onKeyDown={(event) => addTag(student.id, event)}
+              onKeyDown={(event) => props.addTag(student.id, event)}
             />
-
           </div>
         </div>
       </article>
@@ -106,7 +99,3 @@ export default function StudentListItem(props) {
 }
 
 
-
-StudentListItem.propTypes = {
-  students: PropTypes.array.isRequired,
-};
